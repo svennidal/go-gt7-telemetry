@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	gt7 "github.com/snipem/go-gt7-telemetry/lib"
 	"reflect"
 	"time"
+
+	gt7 "github.com/snipem/go-gt7-telemetry/lib"
 )
 
 func prettyPrintStruct(data interface{}) {
@@ -21,11 +22,11 @@ func prettyPrintStruct(data interface{}) {
 }
 
 func main() {
-	gt7c := gt7.NewGT7Communication("255.255.255.255")
+	gt7c := gt7.NewGT7Communication("192.168.1.215")
 	go gt7c.Run()
 	for true {
 		fmt.Print("\033[H\033[2J")
 		prettyPrintStruct(gt7c.LastData)
-		time.Sleep(160 * time.Millisecond)
+		time.Sleep(60 * time.Millisecond)
 	}
 }
